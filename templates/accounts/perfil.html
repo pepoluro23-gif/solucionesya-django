@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Mi perfil{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm"><div class="card-body p-4">
+      <div class="d-flex align-items-center gap-4 flex-wrap">
+        {% if user.perfil.avatar %}
+          <img src="{{ user.perfil.avatar.url }}" class="avatar-lg" alt="avatar">
+        {% else %}
+          <i class="bi bi-person-circle text-secondary" style="font-size:150px;line-height:1"></i>
+        {% endif %}
+        <div>
+          <h1 class="h3 mb-1">{{ user.get_full_name|default:user.username }}</h1>
+          <p class="text-muted mb-1">@{{ user.username }} · {{ user.email }}</p>
+          <p class="small text-muted mb-0">Miembro desde {{ user.date_joined|date:"d/m/Y" }}</p>
+        </div>
+      </div>
+      <hr>
+      <dl class="row mb-0">
+        <dt class="col-sm-4">Sobre mí</dt><dd class="col-sm-8">{{ user.perfil.bio|default:"—"|linebreaksbr }}</dd>
+        <dt class="col-sm-4">Teléfono</dt><dd class="col-sm-8">{{ user.perfil.telefono|default:"—" }}</dd>
+        <dt class="col-sm-4">Sitio web</dt>
+        <dd class="col-sm-8">{% if user.perfil.web %}<a href="{{ user.perfil.web }}" target="_blank">{{ user.perfil.web }}</a>{% else %}—{% endif %}</dd>
+        <dt class="col-sm-4">Fecha de nacimiento</dt><dd class="col-sm-8">{{ user.perfil.fecha_nacimiento|date:"d/m/Y"|default:"—" }}</dd>
+        <dt class="col-sm-4">Publicaciones</dt><dd class="col-sm-8">{{ user.servicios.count }}</dd>
+      </dl>
+      <div class="mt-4">
+        <a href="{% url 'accounts:editar_perfil' %}" class="btn btn-primary"><i class="bi bi-pencil"></i> Editar perfil</a>
+        <a href="{% url 'accounts:cambiar_password' %}" class="btn btn-outline-secondary"><i class="bi bi-key"></i> Cambiar contraseña</a>
+      </div>
+    </div></div>
+  </div>
+</div>
+{% endblock %}
