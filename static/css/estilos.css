@@ -1,0 +1,13 @@
+:root { --sy: #0d4f8b; }
+.bg-sy { background-color: var(--sy); }
+.text-sy { color: var(--sy); }
+.hero { background: linear-gradient(135deg, var(--sy), #1b7fd1); color: #fff; border-radius: 1rem; }
+.avatar-sm { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+.avatar-lg { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
+.card-img-top { height: 200px; object-fit: cover; }
+.placeholder-img { height: 200px; background: #e9eef5; display: flex; align-items: center;
+                   justify-content: center; font-size: 3rem; color: #9aa9bd; }
+.detalle-img { max-height: 420px; width: 100%; object-fit: cover; border-radius: .75rem; }
+.contenido img { max-width: 100%; height: auto; }
+.card { transition: transform .15s; }
+.card:hover { transform: translateY(-3px); }
