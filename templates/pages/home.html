@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<section class="hero p-5 mb-5">
+  <h1 class="display-5 fw-bold">Soluciones Ya</h1>
+  <p class="lead">Servicios a domicilio en Viedma y Carmen de Patagones: armado de muebles,
+    cámaras de seguridad, limpieza de tanques, electricidad y plomería.</p>
+  <a href="{% url 'pages:lista' %}" class="btn btn-light btn-lg me-2">Ver servicios</a>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'accounts:registro' %}" class="btn btn-outline-light btn-lg">Crear cuenta</a>
+  {% endif %}
+</section>
+
+<h2 class="h4 mb-3">Últimas publicaciones</h2>
+<div class="row g-4">
+  {% for s in ultimos %}
+    {% include 'pages/_card.html' %}
+  {% empty %}
+    <p class="text-muted">No hay páginas aún.</p>
+  {% endfor %}
+</div>
+{% endblock %}

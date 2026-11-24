@@ -1,0 +1,16 @@
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm">
+    {% if s.imagen %}
+      <img src="{{ s.imagen.url }}" class="card-img-top" alt="{{ s.titulo }}">
+    {% else %}
+      <div class="placeholder-img"><i class="bi bi-tools"></i></div>
+    {% endif %}
+    <div class="card-body d-flex flex-column">
+      <span class="badge bg-secondary align-self-start mb-2">{{ s.get_categoria_display }}</span>
+      <h5 class="card-title">{{ s.titulo }}</h5>
+      <p class="card-text text-muted">{{ s.subtitulo }}</p>
+      <p class="small text-muted mt-auto mb-2">{{ s.fecha|date:"d/m/Y" }} · por {{ s.autor.username }}</p>
+      <a href="{{ s.get_absolute_url }}" class="btn btn-outline-primary btn-sm">Leer más</a>
+    </div>
+  </div>
+</div>

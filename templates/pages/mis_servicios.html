@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Mis publicaciones{% endblock %}
+{% block content %}
+<h1 class="h3 mb-4">Mis publicaciones</h1>
+<div class="row g-4">
+  {% for s in servicios %}
+    {% include 'pages/_card.html' %}
+  {% empty %}
+    <div class="col-12">
+      <div class="alert alert-info">Todavía no publicaste nada.
+        <a href="{% url 'pages:crear' %}">Crear la primera publicación</a>.</div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
